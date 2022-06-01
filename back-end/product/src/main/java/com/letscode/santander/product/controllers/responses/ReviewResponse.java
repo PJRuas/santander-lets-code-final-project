@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 @NoArgsConstructor
 @Service
 public class ReviewResponse {
+    Integer id;
     Integer productId;
     Integer userId;
     String content;
@@ -18,6 +19,7 @@ public class ReviewResponse {
 
     public ReviewResponse fromDomain(Review review){
         ReviewResponse reviewResponse = new ReviewResponse();
+        reviewResponse.setId(review.getId());
         reviewResponse.setProductId(review.getProduct().getId());
         reviewResponse.setUserId(review.getUserId());
         reviewResponse.setContent(review.getContent());

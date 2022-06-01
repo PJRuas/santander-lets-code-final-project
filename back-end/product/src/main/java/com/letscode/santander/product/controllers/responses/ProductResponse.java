@@ -15,6 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @Service
 public class ProductResponse {
+    Integer id;
     String name;
     Category category;
     Float price;
@@ -24,6 +25,7 @@ public class ProductResponse {
 
     public ProductResponse fromDomain(Product product){
         ProductResponse productResponse = new ProductResponse();
+        productResponse.setId(product.getId());
         productResponse.setName(product.getName());
         productResponse.setCategory(product.getCategory());
         productResponse.setPrice(product.getPrice());
