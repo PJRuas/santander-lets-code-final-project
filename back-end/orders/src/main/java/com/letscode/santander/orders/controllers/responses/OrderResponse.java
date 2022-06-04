@@ -5,7 +5,6 @@ import com.letscode.santander.orders.domains.enums.Status;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -19,6 +18,7 @@ public class OrderResponse {
     private Integer id;
     private Integer userId;
     private Map<Integer, Integer> products;
+    private Float total;
     private LocalDateTime creationDate;
     private LocalDateTime updateDate;
     private Status status;
@@ -31,6 +31,7 @@ public class OrderResponse {
         orderResponse.setCreationDate(order.getCreationDate());
         orderResponse.setUpdateDate(order.getUpdateDate());
         orderResponse.setStatus(order.getStatus());
+        orderResponse.setTotal(order.getTotal());
 
         return orderResponse;
     }

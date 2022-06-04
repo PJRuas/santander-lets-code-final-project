@@ -21,8 +21,8 @@ public class Review {
     @JoinColumn(name = "product_id", referencedColumnName = "id")
     private Product product;
 
-    @Column(name = "user_id", nullable = false)
-    private Integer userId;
+    @Column(name = "order_id", nullable = false)
+    private Integer orderId;
 
     @Column(name = "content", nullable = false)
     private String content;

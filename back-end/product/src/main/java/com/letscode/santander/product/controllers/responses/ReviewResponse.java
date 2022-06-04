@@ -11,17 +11,21 @@ import org.springframework.stereotype.Service;
 @NoArgsConstructor
 @Service
 public class ReviewResponse {
-    Integer id;
-    Integer productId;
-    Integer userId;
-    String content;
-    Float rating;
+    private Integer id;
+    private Integer productId;
+    private String productName;
+    private String productBrand;
+    private Integer orderId;
+    private String content;
+    private Float rating;
 
     public ReviewResponse fromDomain(Review review){
         ReviewResponse reviewResponse = new ReviewResponse();
         reviewResponse.setId(review.getId());
         reviewResponse.setProductId(review.getProduct().getId());
-        reviewResponse.setUserId(review.getUserId());
+        reviewResponse.setProductName(review.getProduct().getName());
+        reviewResponse.setProductBrand(review.getProduct().getBrand());
+        reviewResponse.setOrderId(review.getOrderId());
         reviewResponse.setContent(review.getContent());
         reviewResponse.setRating(review.getRating());
 

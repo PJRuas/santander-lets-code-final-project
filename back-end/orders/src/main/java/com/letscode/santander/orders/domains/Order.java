@@ -29,6 +29,12 @@ public class Order {
     @Column(name = "products", nullable = false)
     private Map<Integer, Integer> products;
 
+    @Column(name = "total_cost")
+    private Float total;
+
+    @Column(name = "reviewed")
+    private boolean reviewed;
+
     @Column(name = "creation_date")
     @CreatedDate
     private LocalDateTime creationDate;
@@ -36,6 +42,7 @@ public class Order {
     @Column(name = "update_date")
     @LastModifiedDate
     private LocalDateTime updateDate;
+
 
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
