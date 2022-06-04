@@ -17,13 +17,21 @@ Getting started:
 
 5. Funcionality is as follows:
     a. POST a Product to 8080/product
+  
     b. POST an User to 8082/user
+    
       b.1. the application will generate a Cart for the user just created
+      
     c. PUT a product in the cart 8082/userId/cart
+    
     d. POST an Order to 8081/order
+    
       d.1. the Order takes a Cart as input, placing an Order takes all items in cart and leaves it empty
+      
       d.2. after placing an Order, Review service will be available for that purchase
+      
     e. POST a Review to 8080/review
+    
  Done! you can now perform GET requests to the same endpoints and see what you made!
     
     
