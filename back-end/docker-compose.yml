@@ -1,0 +1,34 @@
+services:
+ eureka:
+  image: final-eureka:1
+  ports:
+   - 8761:8761
+  networks:
+   - final-santander-lets
+ admin:
+  image: final-admin:1
+  ports:
+   - 8079:8079
+  networks:
+   - final-santander-lets
+ productapi:
+  image: final-product:1
+  ports:
+   - 8080:8080
+  networks:
+   - final-santander-lets
+ userapi:
+  image: final-user:1
+  ports:
+   - 8082:8082
+  networks:
+   - final-santander-lets
+ orderapi:
+  image: final-order:1
+  ports:
+   - 8081:8081
+  networks:
+   - final-santander-lets
+networks:
+ final-santander-lets:
+  driver: bridge		

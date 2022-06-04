@@ -2,6 +2,7 @@ package com.letscode.santander.product.services;
 
 import com.letscode.santander.product.domains.Product;
 import com.letscode.santander.product.gateways.ProductRepository;
+import com.letscode.santander.product.gateways.clients.CartClient;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,8 @@ import java.util.List;
 @NoArgsConstructor
 public class ProductService {
 
+    @Autowired
+    CartClient cartClient;
     @Autowired
     ProductRepository productRepository;
 
@@ -24,6 +27,7 @@ public class ProductService {
         } catch (Exception e) {
             System.out.println(e);
         }
+        cartClient.refreshAvailableProducts();
         return  product;
     };
     public Product getById(Integer productId){
@@ -36,10 +40,13 @@ public class ProductService {
         if(product.getPrice() != null){productToUpdate.setPrice(product.getPrice());}
         if(product.getBrand() != null ){productToUpdate.setBrand(product.getBrand());}
 
-        return productRepository.save(productToUpdate);
+        productRepository.save(productToUpdate);
+        cartClient.refreshAvailableProducts();
+        return productToUpdate;
     };
     public void delete(Integer productId){
         var deletable = getById(productId);
         productRepository.delete(deletable);
+        cartClient.refreshAvailableProducts();
     };
 }

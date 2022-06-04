@@ -3,6 +3,7 @@ package com.letscode.santander.orders.controllers.controllers;
 import com.letscode.santander.orders.controllers.requests.OrderRequest;
 import com.letscode.santander.orders.controllers.responses.OrderResponse;
 import com.letscode.santander.orders.services.OrderService;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,9 +30,14 @@ public class OrderController {
         return converter.fromDomain(orderService.getById(id));
     }
 
+//    @PostMapping
+//    public OrderResponse create(@RequestBody OrderRequest orderRequest){
+//        return converter.fromDomain(orderService.create(orderRequest.toDomain()));
+//    }
+
     @PostMapping
-    public OrderResponse create(@RequestBody OrderRequest orderRequest){
-        return converter.fromDomain(orderService.create(orderRequest.toDomain()));
+    public OrderResponse create(@RequestParam Integer cartId){
+        return converter.fromDomain(orderService.create(cartId));
     }
 
     @PutMapping("/{id}")

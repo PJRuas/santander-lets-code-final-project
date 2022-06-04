@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -16,25 +17,25 @@ import java.util.List;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer id;
+    private Integer id;
 
     @Column(name = "name", nullable = false)
-    String name;
+    private String name;
 
     @Column(name = "category", nullable = false)
     @Enumerated(EnumType.STRING)
-    Category category;
+    private Category category;
 
     @Column(name = "price", nullable = false)
-    Float price;
+    private Float price;
 
     @Column(name = "brand", nullable = false)
-    String brand;
+    private String brand;
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-    List<Review> reviews;
+    private List<Review> reviews = new ArrayList<>();
 
     @Column(name = "rating")
-    Float rating;
+    private Float rating;
 
     public void calculateRating(){
         Float total = 0f;
